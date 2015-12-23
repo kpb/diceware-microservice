@@ -42,9 +42,7 @@ public class NumberGenerator {
         Set<Integer> diceNums = new HashSet<Integer>();
 
         while (diceNums.size() < num) {
-            if (!diceNums.add(generate())) {
-                System.out.println("NOPE, try again!");
-            }
+            diceNums.add(generate());
         }
 
         return diceNums;
