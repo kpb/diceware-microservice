@@ -2,4 +2,4 @@
 
 with microservices!
 
-Just getting started hear - watch this space.
+Just getting started - watch this space.
