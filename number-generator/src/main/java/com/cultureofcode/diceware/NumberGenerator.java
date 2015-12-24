@@ -39,7 +39,7 @@ public class NumberGenerator {
             throw new IllegalArgumentException("Can only generate between 5 & 10 diceware numbers");
         }
 
-        Set<Integer> diceNums = new HashSet<Integer>();
+        Set<Integer> diceNums = new HashSet<>();
 
         while (diceNums.size() < num) {
             diceNums.add(generate());
