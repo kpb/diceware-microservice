@@ -10,11 +10,14 @@
   </parent>
 
   <groupId>com.cultureofcode</groupId>
-  <artifactId>number-generator</artifactId>
+  <artifactId>diceware-words</artifactId>
   <packaging>jar</packaging>
 
-  <name>Number Generator</name>
-  <description>Generates Diceware numbers</description>
+  <name>Diceware Words</name>
+  <description>
+    Given some number of Diceware numbers, creates a passphrase
+    based on the diceware list.
+  </description>
 
   <build>
     <plugins>

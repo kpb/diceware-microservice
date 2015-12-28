@@ -52,6 +52,7 @@
 
   <modules>
     <module>number-generator</module>
+    <module>diceware-words</module>
   </modules>
 
 </project>
