@@ -1,10 +1,8 @@
 package com.cultureofcode.diceware;
 
-import static org.junit.Assert.*;
-import static org.hamcrest.Matchers.*;
-
 import java.util.Arrays;
-
+import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class NumberGeneratorTest {
@@ -21,6 +19,19 @@ public class NumberGeneratorTest {
             Integer diceNum = numberGenerator.generate();
             assertThat(diceNum, greaterThanOrEqualTo(min));
             assertThat(diceNum, lessThanOrEqualTo(max));
+        }
+    }
+
+    @Test
+    public void generateValid() {
+      NumberGenerator numberGenerator = new NumberGenerator();
+
+        for (int i = 0; i < 10000; i++) {
+            Integer diceNum = numberGenerator.generate();
+            String s = String.valueOf(diceNum);
+            s.chars().filter(digit -> digit == '0')
+                    .forEach(digit -> fail("Generated bogus number " + diceNum));
+            // TODO check for additional non-dice numbers (7,8,9)
         }
     }
 
