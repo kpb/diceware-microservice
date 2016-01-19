@@ -13,7 +13,7 @@
   <artifactId>diceware-words</artifactId>
   <packaging>jar</packaging>
 
-  <name>Diceware Words</name>
+  <name>diceware-words</name>
   <description>
     Given some number of Diceware numbers, creates a passphrase
     based on the diceware list.

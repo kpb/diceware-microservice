@@ -8,7 +8,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>Diceware CLI</name>
+  <name>diceware-cli</name>
   <description>CLI for the Diceware Microservice project</description>
 
   <parent>
@@ -24,6 +24,18 @@
   </properties>
 
   <dependencies>
+    <dependency>
+      <groupId>com.cultureofcode</groupId>
+      <artifactId>diceware-words</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.cultureofcode</groupId>
+      <artifactId>number-generator</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter</artifactId>
@@ -44,6 +56,5 @@
       </plugin>
     </plugins>
   </build>
-
 
 </project>

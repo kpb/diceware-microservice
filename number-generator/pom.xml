@@ -13,7 +13,7 @@
   <artifactId>number-generator</artifactId>
   <packaging>jar</packaging>
 
-  <name>Number Generator</name>
+  <name>number-generator</name>
   <description>Generates Diceware numbers</description>
 
   <build>
