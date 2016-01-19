@@ -1,6 +1,6 @@
-
 package com.cultureofcode.diceware.cli;
 
+import java.util.Map;
 import java.util.Scanner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -16,43 +16,53 @@ import org.springframework.stereotype.Component;
 @Component
 public class DicewareCommandLineRunner implements CommandLineRunner {
 
-  @Autowired
-  ApplicationContext ctx;
+    @Autowired
+    ApplicationContext ctx;
 
-  @Override
-  public void run(String... strings) throws Exception {
+    @Autowired
+    DicewareService dicewareService;
 
-    int words = promptUser();
-    System.out.println("Generating a passphrase " + words + " words long...");
+    @Override
+    public void run(String... strings) throws Exception {
 
-    // TODO app logic
+        int words = promptUser();
+        System.out.println("Generating a passphrase " + words + " words long...");
 
-    // exit. thanks for the Lambda, java 8!
-    SpringApplication.exit(ctx, (ExitCodeGenerator) () -> 0);
-  }
+        // generate the passphrase
+        Map<Integer, String> passphrase = dicewareService.generatePassphrase(words);
 
-  /**
-   * Prompt the user for a valid passphrase word length.
-   */
-  int promptUser() {
+        // output with formatting
+        passphrase.values().forEach(word -> System.out.printf("%-10.10s", word));
+        System.out.println();
+        passphrase.keySet().forEach(num -> System.out.printf("%-10.10s", num));
+        System.out.println();
 
-    try (Scanner scanner = new Scanner(System.in)) {
-      int words = 5;
-
-      System.out.print("How many words in the passphrase (default 5)? ");
-
-      String line = scanner.nextLine();
-      if (line.isEmpty()) {
-        return words;
-      } else {
-        // handle NumberFormatException
-        try {
-          return Integer.valueOf(line);
-        } catch (NumberFormatException nfe) {
-          System.out.println("Not Valid");
-          return promptUser();
-        }
-      }
+        // exit. thanks for the Lambda, java 8!
+        SpringApplication.exit(ctx, (ExitCodeGenerator) () -> 0);
     }
-  }
+
+    /**
+     * Prompt the user for a valid passphrase word length.
+     */
+    int promptUser() {
+
+        try (Scanner scanner = new Scanner(System.in)) {
+            int words = 5;
+
+            System.out.print("How many words in the passphrase (default 5)? ");
+
+            String line = scanner.nextLine();
+            if (line.isEmpty()) {
+                return words;
+            } else {
+                // handle NumberFormatException
+                try {
+                    return Integer.valueOf(line);
+                } catch (NumberFormatException nfe) {
+                    System.out.println("Not Valid");
+                    return promptUser();
+                }
+            }
+        }
+    }
 }

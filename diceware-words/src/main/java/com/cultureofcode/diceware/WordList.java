@@ -14,36 +14,40 @@ import java.util.stream.Stream;
  */
 public class WordList {
 
-  String wordlistFile = "/diceware.wordlist.asc";
+    String wordlistFile = "/diceware.wordlist.asc";
 
-  Map<Integer, String> dicewordMap = new HashMap<>();
+    Map<Integer, String> dicewordMap = new HashMap<>();
 
-  public static WordList newInstance() {
-    WordList wordList = new WordList();
-    wordList.load();
-    return wordList;
-  }
+    public static WordList newInstance() {
+        WordList wordList = new WordList();
+        wordList.load();
+        return wordList;
+    }
 
-  /**
-   * Loads the diceware word list.
-   */
-  void load() {
+    /**
+     * Loads the diceware word list.
+     */
+    void load() {
 
-    InputStream is = this.getClass().getResourceAsStream(wordlistFile);
-    BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+        InputStream is = this.getClass().getResourceAsStream(wordlistFile);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
 
-    Pattern dicewareNumberPattern = Pattern.compile("^\\d{5}\\s.*");
+        Pattern dicewareNumberPattern = Pattern.compile("^\\d{5}\\s.*");
 
-    Stream<String> lines = reader.lines();
+        Stream<String> lines = reader.lines();
 
-    lines.filter(line -> dicewareNumberPattern.matcher(line).matches())
-            .forEach(line -> {
-              String[] tokens = line.split("\\s");
-              dicewordMap.put(Integer.valueOf(tokens[0]), tokens[1]);
-            });
-  }
+        lines.filter(line -> dicewareNumberPattern.matcher(line).matches())
+                .forEach(line -> {
+                    String[] tokens = line.split("\\s");
+                    dicewordMap.put(Integer.valueOf(tokens[0]), tokens[1]);
+                });
+    }
 
-  public Map<Integer, String> getDicewordMap() {
-    return dicewordMap;
-  }
+    public String getWord(int num) {
+        return dicewordMap.get(num);
+    }
+
+    public Map<Integer, String> getDicewordMap() {
+        return dicewordMap;
+    }
 }
