@@ -1,2 +1,2 @@
-
+# Welcome/explanatory text for the cli application
 Welcome to Diceware CLI!
