@@ -8,11 +8,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class DicewareCLI {
 
-  // TODO implelent a CommandLineRunner class to process the args
+    // TODO @Bean defs here
 
-  // TODO @Bean defs here
-
-  public static void main(String[] args) {
-    SpringApplication.run(DicewareCLI.class, args);
-  }
+    public static void main(String[] args) {
+        SpringApplication.run(DicewareCLI.class, args);
+    }
 }
