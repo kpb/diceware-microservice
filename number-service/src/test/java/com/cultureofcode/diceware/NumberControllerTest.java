@@ -40,11 +40,6 @@ public class NumberControllerTest {
         this.mockMvc = webAppContextSetup(this.webContext).build();
     }
 
-    /**
-     * Test of getNumbers method, of class NumberController.
-     *
-     * @throws java.lang.Exception
-     */
     @Test
     public void getDefaultLength() throws Exception {
 
@@ -56,4 +51,43 @@ public class NumberControllerTest {
               ;
     }
 
+    @Test
+    public void get3() throws Exception {
+
+      mockMvc.perform(get("/diceware/numbers?length=3"))
+              .andExpect(status().isOk())
+              .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+              .andExpect(jsonPath("diceware_numbers").isArray())
+              .andExpect(jsonPath("diceware_numbers", hasSize(3)))
+              ;
+    }
+
+    @Test
+    public void get10() throws Exception {
+
+      mockMvc.perform(get("/diceware/numbers?length=10"))
+              .andExpect(status().isOk())
+              .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+              .andExpect(jsonPath("diceware_numbers").isArray())
+              .andExpect(jsonPath("diceware_numbers", hasSize(10)))
+              ;
+    }
+
+    @Test
+    public void getTooMany() throws Exception {
+
+      mockMvc.perform(get("/diceware/numbers?length=20"))
+              .andExpect(status().isBadRequest())
+              .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+              ;
+    }
+
+    @Test
+    public void getTooFew() throws Exception {
+
+      mockMvc.perform(get("/diceware/numbers?length=1"))
+              .andExpect(status().isBadRequest())
+              .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+              ;
+    }
 }
