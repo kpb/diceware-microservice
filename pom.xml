@@ -76,6 +76,7 @@
     <module>number-generator</module>
     <module>diceware-words</module>
     <module>diceware-cli</module>
+    <module>number-service</module>
   </modules>
 
 </project>

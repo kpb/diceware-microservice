@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class DicewareCLI {
 
-    // TODO @Bean defs here
     @Bean
     NumberGenerator numberGenerator() {
         return new NumberGenerator();
