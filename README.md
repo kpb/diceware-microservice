@@ -39,7 +39,7 @@ Build from the top
 
 #### CLI
 
-Run the command line app and follow the instructions:
+Run the command line app and follow the instructions. _Note the version of the jar may change_
 
     $ java -jar diceware-cli/target/diceware-cli-0.0.1-SNAPSHOT.jar 
     Welcome to Diceware CLI!                                            
