@@ -10,6 +10,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 /**
+ * CommandLineRunner impl for the Diceware microservice project.
  *
  * @author kenneth
  */
@@ -26,7 +27,8 @@ public class DicewareCommandLineRunner implements CommandLineRunner {
     public void run(String... strings) throws Exception {
 
         int words = promptUser();
-        System.out.println("Generating a passphrase " + words + " words long...");
+
+        System.out.println("Generating a " + words + " word passphrase...");
 
         // generate the passphrase
         Map<Integer, String> passphrase = dicewareService.generatePassphrase(words);
@@ -55,11 +57,16 @@ public class DicewareCommandLineRunner implements CommandLineRunner {
             if (line.isEmpty()) {
                 return words;
             } else {
-                // handle NumberFormatException
+                // handle NumberFormatException and illegal args
                 try {
-                    return Integer.valueOf(line);
+                  int length = Integer.valueOf(line);
+                  if (length < 3 || length > 10) {
+                    System.out.println("Valid values must be between 3 & 10");
+                    return promptUser();
+                  }
+                    return length;
                 } catch (NumberFormatException nfe) {
-                    System.out.println("Not Valid");
+                    System.out.println("Not a valid value");
                     return promptUser();
                 }
             }
