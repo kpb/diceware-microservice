@@ -17,6 +17,9 @@ entropy the passphrases have and tons of other info.
 The Diceware method encourages you to use a physical die. However, the [faq][3] states that you can use a
 _good_ random number generator to create passphrases, such as Java's `SecureRandom` Class.
 
+The Intercept published a nice article on how to use Diceware [here][5], which also includes some theory about
+how strong the passphrases are.
+
 ### Design
 
 TODO Microservices. Spring boot. Spring Netflix OSS. Other goodness.
@@ -55,3 +58,4 @@ Run the command line app and follow the instructions. _Note the version of the j
 [2]: http://world.std.com/%7Ereinhold/diceware.wordlist.asc
 [3]: http://world.std.com/~reinhold/dicewarefaq.html#computer
 [4]: https://maven.apache.org/
+[5]: https://theintercept.com/2015/03/26/passphrases-can-memorize-attackers-cant-guess/
