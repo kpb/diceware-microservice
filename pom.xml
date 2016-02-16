@@ -78,6 +78,7 @@
     <module>diceware-cli</module>
     <module>number-service</module>
     <module>service-discovery</module>
+    <module>diceware-web</module>
   </modules>
 
 </project>
