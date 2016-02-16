@@ -1,6 +1,12 @@
 <!doctype html>
-<html ng-app="hello">
+<html ng-app="dicewareMS">
   <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these
+         tags -->
+    
     <title>Diceware Passphrase Generator</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
     <script src="js/hello.js"></script>
@@ -10,8 +16,11 @@
   <body>
     
     <div class="container">
-      <div ng-controller="home">
-        <p ng-repeat="item in greeting"> {{ item.number }} | {{ item.word }}</p>
+      <div ng-controller="dicewareController" ng-cloak class="ng-cloak row">
+        <div ng-repeat="item in passphrase" class="col-md-1">
+          <p>{{ item.word }}</p>
+          <p>{{ item.number }}</p>
+        </div>
       </div>
     </div>
 

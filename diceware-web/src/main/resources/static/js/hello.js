@@ -1,6 +1,6 @@
-var hello = angular.module('hello', []);
+var dicewareMS = angular.module('dicewareMS', []);
 
-hello.controller('home', ['$scope', function($scope) {
-      $scope.greeting = [{"number": "11111", "word": "bazbar"}, {"number": "12345", "word": "foobar"}];
+dicewareMS.controller('dicewareController', ['$scope', function($scope) {
+      $scope.passphrase = [{"number": "11111", "word": "bazbar"}, {"number": "12345", "word": "foobar"}];
 }]);
 
