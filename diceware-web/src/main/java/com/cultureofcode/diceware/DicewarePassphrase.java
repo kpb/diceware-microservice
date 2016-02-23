@@ -6,8 +6,9 @@
 package com.cultureofcode.diceware;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * Diceware passphrase DTO.
@@ -17,26 +18,38 @@ import java.util.Map;
 public class DicewarePassphrase {
 
   @JsonProperty("passphrase")
-  Map<Integer, String> passPhrase = new LinkedHashMap<>();
+  List<DicewareWord> passphrase = new ArrayList<>();
 
+  public List<DicewareWord> getPassphrase() {
+    return passphrase;
+  }
 
-  /**
-   * Add a word to the passphrase
-   * @param num the diceware 'number' - as if a dice was rolled 5 times
-   * @param word the corresponding word from the diceware word list
-   * @return this for great train wreck
-   */
+  public void setPassphrase(List<DicewareWord> passphrase) {
+    this.passphrase = passphrase;
+  }
+
   public DicewarePassphrase addWord(Integer num, String word) {
-
-    passPhrase.put(num, word);
+    passphrase.add(new DicewareWord()
+            .setNumber(num).setWord(word));
     return this;
   }
 
-  public Map<Integer, String> getPassPhrase() {
-    return passPhrase;
+  public static class DicewareWord {
+
+    public Integer number;
+    public String word;
+
+    public DicewareWord setNumber(Integer number) {
+      this.number = number;
+      return this;
+    }
+
+    public DicewareWord setWord(String word) {
+      this.word = word;
+      return this;
+    }
+
+
   }
 
-  public void setPassPhrase(Map<Integer, String> passPhrase) {
-    this.passPhrase = passPhrase;
-  }
 }

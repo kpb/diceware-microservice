@@ -16,7 +16,15 @@ import org.springframework.web.bind.annotation.RestController;
  * @author kenneth
  */
 @RestController
-@RequestMapping(path="/diceware")
 public class DicewareController {
+
+
+  @RequestMapping(path = "/passphrase", method = RequestMethod.GET)
+  public DicewarePassphrase generatePassphrase() {
+
+    return new DicewarePassphrase()
+            .addWord(11111, "foo")
+            .addWord(12345, "bar");
+  }
 
 }
