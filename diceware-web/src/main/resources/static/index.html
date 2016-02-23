@@ -11,14 +11,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
     <script src="js/diceware-ms.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"></link>
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+          crossorigin="anonymous"></link>
+    <link href='https://fonts.googleapis.com/css?family=Quando' rel='stylesheet' type='text/css'></link>
+    <link rel="stylesheet" href="css/diceware.css"></link>
   </head>
   <body>
     
-    <div class="container">
+    <div class="container content">
       <div ng-controller="dicewareController" ng-cloak class="ng-cloak row">
         <div ng-repeat="item in passphrase" class="col-md-1">
-          <p>{{ item.word }}</p>
+          <p class="lead">{{ item.word }}</p>
           <p>{{ item.number }}</p>
         </div>
       </div>

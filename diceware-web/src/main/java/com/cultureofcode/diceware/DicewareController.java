@@ -15,16 +15,22 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author kenneth
  */
+// TODO look up services from Eureka and make actual calls.
 @RestController
 public class DicewareController {
 
 
+  // TODO length
   @RequestMapping(path = "/passphrase", method = RequestMethod.GET)
   public DicewarePassphrase generatePassphrase() {
 
     return new DicewarePassphrase()
-            .addWord(11111, "foo")
-            .addWord(12345, "bar");
+        .addWord(11111, "foo")
+        .addWord(12345, "bar")
+        .addWord(56849, "baz")
+        .addWord(20394, "foobar")
+        .addWord(45096, "bazbar")
+        .addWord(75029, "bazfoo")
+        .addWord(74930, "foobaz");
   }
-
 }
