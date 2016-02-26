@@ -24,8 +24,9 @@ public class DicewarePassphrase {
     return passphrase;
   }
 
-  public void setPassphrase(List<DicewareWord> passphrase) {
+  public DicewarePassphrase setPassphrase(List<DicewareWord> passphrase) {
     this.passphrase = passphrase;
+    return this;
   }
 
   public DicewarePassphrase addWord(Integer num, String word) {

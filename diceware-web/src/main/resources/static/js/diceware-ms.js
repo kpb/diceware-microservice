@@ -7,6 +7,11 @@ dicewareMS.controller('dicewareController', ['$scope', '$http', function($scope,
             $scope.passphrase = data.passphrase;
           });
 
-      
+      $scope.getPassphrase = function(length) {
+        $http.get('http://localhost:8080/diceware/passphrase?length=' + length)
+        .success(function(data, status, headers, config) {
+            $scope.passphrase = data.passphrase;
+          });
+      };
 }]);
 

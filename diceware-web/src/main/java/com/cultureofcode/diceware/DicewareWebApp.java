@@ -11,10 +11,15 @@ import org.springframework.context.annotation.Configuration;
  *
  * @author kenneth
  */
-//@Configuration
+@Configuration
 @SpringBootApplication
 //@EnableDiscoveryClient
 public class DicewareWebApp {
+
+  @Bean
+  public PassphraseService passphraseService() {
+  return new PassphraseService();
+}
 
   public static void main(String[] args) {
     SpringApplication.run(DicewareWebApp.class, args);

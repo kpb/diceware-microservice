@@ -5,6 +5,7 @@
  */
 package com.cultureofcode.diceware;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,18 +20,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DicewareController {
 
+  @Autowired
+  PassphraseService passphraseService;
 
-  // TODO length
   @RequestMapping(path = "/passphrase", method = RequestMethod.GET)
-  public DicewarePassphrase generatePassphrase() {
+  public DicewarePassphrase generatePassphrase(@RequestParam(name = "length", required = false, defaultValue = "7") Integer length) {
 
-    return new DicewarePassphrase()
-        .addWord(11111, "foo")
-        .addWord(12345, "bar")
-        .addWord(56849, "baz")
-        .addWord(20394, "foobar")
-        .addWord(45096, "bazbar")
-        .addWord(75029, "bazfoo")
-        .addWord(74930, "foobaz");
+    return passphraseService.getPassphrase(length);
   }
 }

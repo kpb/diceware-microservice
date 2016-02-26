@@ -18,14 +18,35 @@
   </head>
   <body>
     
-    <div class="container content">
-      <div ng-controller="dicewareController" ng-cloak class="ng-cloak row">
+
+    <div ng-cloak ng-controller="dicewareController" class="container content">
+      <div class="row">
         <div ng-repeat="item in passphrase" class="col-md-1">
           <p class="lead">{{ item.word }}</p>
           <p>{{ item.number }}</p>
         </div>
       </div>
+      <div class="row">
+        <div class="col-md-1 col-md-offset-2">
+          <a ng-click="getPassphrase(3)" class="btn btn-default btn-xs">3 Words</a>
+        </div>
+        <div class="col-md-1">
+          <a ng-click="getPassphrase(4)" class="btn btn-default btn-xs">4 Words</a>
+        </div>
+        <div class="col-md-1">
+          <a ng-click="getPassphrase(5)" class="btn btn-default btn-xs">5 Words</a>
+        </div>
+        <div class="col-md-1">
+          <a ng-click="getPassphrase(6)" class="btn btn-default btn-xs">6 Words</a>
+        </div>
+        <div class="col-md-1">
+          <a ng-click="getPassphrase(7)" class="btn btn-default btn-xs">7 Words</a>
+        </div>
+        <div class="col-md-1">
+          <a ng-click="getPassphrase(8)" class="btn btn-default btn-xs">8 Words</a>
+        </div>
+      </div>
     </div>
-
+    
   </body>
 </html>
