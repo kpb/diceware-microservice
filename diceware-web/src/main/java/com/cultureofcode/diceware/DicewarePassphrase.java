@@ -9,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  * Diceware passphrase DTO.
  *
@@ -17,40 +16,41 @@ import java.util.List;
  */
 public class DicewarePassphrase {
 
-  @JsonProperty("passphrase")
-  List<DicewareWord> passphrase = new ArrayList<>();
+    // TODO json toString() & msg field
 
-  public List<DicewareWord> getPassphrase() {
-    return passphrase;
-  }
+    @JsonProperty("passphrase")
+    List<DicewareWord> passphrase = new ArrayList<>();
 
-  public DicewarePassphrase setPassphrase(List<DicewareWord> passphrase) {
-    this.passphrase = passphrase;
-    return this;
-  }
+    public List<DicewareWord> getPassphrase() {
+        return passphrase;
+    }
 
-  public DicewarePassphrase addWord(Integer num, String word) {
-    passphrase.add(new DicewareWord()
+    public DicewarePassphrase setPassphrase(List<DicewareWord> passphrase) {
+        this.passphrase = passphrase;
+        return this;
+    }
+
+    public DicewarePassphrase addWord(Integer num, String word) {
+        passphrase.add(new DicewareWord()
             .setNumber(num).setWord(word));
-    return this;
-  }
-
-  public static class DicewareWord {
-
-    public Integer number;
-    public String word;
-
-    public DicewareWord setNumber(Integer number) {
-      this.number = number;
-      return this;
+        return this;
     }
 
-    public DicewareWord setWord(String word) {
-      this.word = word;
-      return this;
+    public static class DicewareWord {
+
+        public Integer number;
+        public String word;
+
+        public DicewareWord setNumber(Integer number) {
+            this.number = number;
+            return this;
+        }
+
+        public DicewareWord setWord(String word) {
+            this.word = word;
+            return this;
+        }
+
     }
-
-
-  }
 
 }

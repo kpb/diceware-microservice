@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Set;
 
 /**
+ * DTO binding to the diceware-number-service return.
  *
  * @author kenneth
  */
@@ -21,7 +22,6 @@ public class DicewareNumbers {
         return this;
     }
 
-    // TODO json format
     @Override
     public String toString() {
         return "DicewareNumbers{" + "dicewareNumbers=" + dicewareNumbers + '}';
