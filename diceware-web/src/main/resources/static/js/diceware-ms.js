@@ -12,7 +12,7 @@ dicewareMS.controller('dicewareController', ['$scope', '$http', function($scope,
             });
       };
 
-      /* gets called when the page get loaded */
+      /* gets called when the page is loaded */
       getNewPassphrase(7);
 
       /* get a passphrase when choosing a new length */
