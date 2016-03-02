@@ -1,7 +1,12 @@
 package com.cultureofcode.diceware;
 
+import com.cultureofcode.diceware.client.DicewareNumbers;
+import com.cultureofcode.diceware.client.NumberServiceClient;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 
 /**
  *
@@ -9,8 +14,15 @@ import java.util.List;
  */
 public class PassphraseService {
 
+    @Autowired
+    NumberServiceClient numberServiceClient;
+
   DicewarePassphrase getPassphrase(Integer length) {
     // TODO validate length
+
+      DicewareNumbers dicewareNumbers = numberServiceClient.getNumbers(5);
+      System.out.println("*****");
+      System.out.println(dicewareNumbers);
 
     DicewarePassphrase passphrase = new DicewarePassphrase()
             .setPassphrase(getWords(length));

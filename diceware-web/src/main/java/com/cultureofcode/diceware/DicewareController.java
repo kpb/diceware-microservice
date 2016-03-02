@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.cultureofcode.diceware;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DicewareController {
 
-  @Autowired
-  PassphraseService passphraseService;
+    @Autowired
+    PassphraseService passphraseService;
 
-  @RequestMapping(path = "/passphrase", method = RequestMethod.GET)
-  public DicewarePassphrase generatePassphrase(@RequestParam(name = "length", required = false, defaultValue = "7") Integer length) {
+    @RequestMapping(path = "/passphrase", method = RequestMethod.GET)
+    public DicewarePassphrase generatePassphrase(@RequestParam(name = "length", required = false, defaultValue = "7") Integer length) {
 
-    return passphraseService.getPassphrase(length);
-  }
+        return passphraseService.getPassphrase(length);
+    }
 }

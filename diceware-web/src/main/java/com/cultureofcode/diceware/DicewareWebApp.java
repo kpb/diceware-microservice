@@ -3,6 +3,7 @@ package com.cultureofcode.diceware;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -13,7 +14,8 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @SpringBootApplication
-//@EnableDiscoveryClient
+@EnableDiscoveryClient
+@EnableFeignClients
 public class DicewareWebApp {
 
   @Bean

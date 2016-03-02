@@ -1,10 +1,9 @@
-package com.cultureofcode.diceware;
+package com.cultureofcode.diceware.client;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Set;
 
 /**
- * A simple DTO for wrapping up Set of Diceware Numbers.
  *
  * @author kenneth
  */
