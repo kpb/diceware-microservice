@@ -11,7 +11,7 @@
   <parent>
     <groupId>org.springframework.cloud</groupId>
     <artifactId>spring-cloud-starter-parent</artifactId>
-    <version>Brixton.BUILD-SNAPSHOT</version>
+    <version>Camden.SR1</version>
     <relativePath /> <!-- lookup parent from repository -->
   </parent>
 
