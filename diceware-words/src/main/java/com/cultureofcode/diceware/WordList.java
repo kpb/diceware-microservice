@@ -14,7 +14,7 @@ import java.util.stream.Stream;
  */
 public class WordList {
 
-    String wordlistFile = "/diceware.wordlist.asc";
+    String wordlistFile = "/eff_large_wordlist.txt";
 
     Map<Integer, String> dicewordMap = new HashMap<>();
 
