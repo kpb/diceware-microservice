@@ -1,4 +1,4 @@
 rootProject.name = 'diceware-microservice'
+include 'diceware-words'
 include 'number-generator'
 include 'number-service'
-include 'diceware-words'
