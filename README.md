@@ -26,10 +26,7 @@ TODO Microservices. Spring boot. Spring Netflix OSS. Other goodness.
 
 ### Building and Running
 
-You'll need a recent version of [Maven][4]
-
-    $ mvn --version
-    Apache Maven 3.3.3 (7994120775791599e205a5524ec3e0dfe41d4a06; 2015-04-22T05:57:37-06:00)
+The projects are build using the [Gradle Wrapper][6]
 
 Clone the project
 
@@ -38,13 +35,13 @@ Clone the project
 Build from the top
 
     $ cd diceware-microservice
-    $ mvn clean install
+    $ ./gradlew build
 
 #### CLI
 
-Run the command line app and follow the instructions. _Note the version of the jar may change_
+Run the command line app and follow the instructions. _Note: the version of the jar may change_
 
-    $ java -jar diceware-cli/target/diceware-cli-0.0.1-SNAPSHOT.jar 
+    $ java -jar diceware-cli/build/libs/diceware-cli-0.0.1.jar
     Welcome to Diceware CLI!                                            
 
     How many words in the passphrase (default 5)? 4
@@ -53,9 +50,10 @@ Run the command line app and follow the instructions. _Note the version of the j
     63532     65261     43263     25135
     
 
-
+<!-- links -->
 [1]: http://world.std.com/~reinhold/diceware.html
 [2]: http://world.std.com/%7Ereinhold/diceware.wordlist.asc
 [3]: http://world.std.com/~reinhold/dicewarefaq.html#computer
 [4]: https://maven.apache.org/
 [5]: https://theintercept.com/2015/03/26/passphrases-can-memorize-attackers-cant-guess/
+[6]: https://docs.gradle.org/current/userguide/gradle_wrapper.html

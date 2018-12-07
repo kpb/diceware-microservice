@@ -1,5 +1,11 @@
-target
 *.iml
+.classpath
+.gradle
 .idea
-nbproject
+.project
+.settings
+.vscode
+build
 nb-configuration.xml
+nbproject
+target
