@@ -2,6 +2,9 @@ plugins {
   id "org.springframework.boot" version "2.1.1.RELEASE" apply false
 }
 
+// The overall project version
+version = '0.1.0'
+
 subprojects {
 
   group = 'com.cultureofcode'
