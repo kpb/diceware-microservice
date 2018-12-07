@@ -1,6 +1,9 @@
 *.iml
+.classpath
 .gradle
 .idea
+.project
+.settings
 .vscode
 build
 nb-configuration.xml
