@@ -1,20 +1,49 @@
+plugins {
+  id "org.springframework.boot" version "2.1.1.RELEASE" apply false
+}
+
 subprojects {
 
-  apply plugin: 'java'
   group = 'com.cultureofcode'
 
-    repositories {
-        mavenCentral()
-    }
+  apply plugin: 'java'
+
+  repositories {
+    mavenCentral()
+  }
+
+  dependencies {
+    testImplementation('junit:junit:4.12')
+    testImplementation('org.hamcrest:hamcrest-all:1.3')
+  }
 }
 
 project(':number-generator') {
 
   version = '0.0.1-SNAPSHOT'
+}
+
+project(':number-service') {
+
+  version = '0.0.1-SNAPSHOT'
+
+  apply plugin: 'org.springframework.boot'
+  apply plugin: 'io.spring.dependency-management'
+
+  dependencyManagement {
+    imports {
+      mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Finchley.SR2'
+    }
+  }
 
   dependencies {
+    implementation project(':number-generator')
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    implementation('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
 
-    testImplementation('junit:junit:4.12')
-    testImplementation('org.hamcrest:hamcrest-all:1.3')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+
+    
+
   }
 }

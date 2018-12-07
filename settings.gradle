@@ -1,2 +1,3 @@
 rootProject.name = 'diceware-microservice'
 include 'number-generator'
+include 'number-service'
