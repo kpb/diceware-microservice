@@ -52,6 +52,8 @@ project(':diceware-words') {
 
 project(':service-discovery') {
 
+  version = '0.0.1-SNAPSHOT'
+
   apply plugin: 'org.springframework.boot'
   apply plugin: 'io.spring.dependency-management'
 
@@ -70,6 +72,8 @@ project(':service-discovery') {
 
 project(':diceware-cli') {
 
+  version = '0.0.1'
+
   apply plugin: 'org.springframework.boot'
   apply plugin: 'io.spring.dependency-management'
 
@@ -83,6 +87,8 @@ project(':diceware-cli') {
 }
 
 project(':diceware-web') {
+
+  version = '0.0.1'
 
   apply plugin: 'org.springframework.boot'
   apply plugin: 'io.spring.dependency-management'
