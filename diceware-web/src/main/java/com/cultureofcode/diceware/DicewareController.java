@@ -24,7 +24,7 @@ public class DicewareController {
      * @param length how many words in the passphrase?
      * @return a json representation of a Diceware passphrase {@link com.cultureofcode.diceware.client.DicewareNumbers}
      */
-    @RequestMapping(path = "/passphrase", method = RequestMethod.GET)
+    @RequestMapping(path = "/diceware/passphrase", method = RequestMethod.GET)
     public DicewarePassphrase generatePassphrase(@RequestParam(name = "length", required = false, defaultValue = "7") Integer length) {
 
         return passphraseService.getPassphrase(length);
