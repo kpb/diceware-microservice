@@ -42,8 +42,10 @@ project(':number-service') {
     implementation('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
-
-    
-
   }
+}
+
+project(':diceware-words') {
+
+  version = '0.0.1-SNAPSHOT'
 }
