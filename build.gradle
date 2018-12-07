@@ -1,0 +1,20 @@
+subprojects {
+
+  apply plugin: 'java'
+  group = 'com.cultureofcode'
+
+    repositories {
+        mavenCentral()
+    }
+}
+
+project(':number-generator') {
+
+  version = '0.0.1-SNAPSHOT'
+
+  dependencies {
+
+    testImplementation('junit:junit:4.12')
+    testImplementation('org.hamcrest:hamcrest-all:1.3')
+  }
+}
