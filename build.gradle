@@ -1,5 +1,6 @@
 plugins {
-  id "org.springframework.boot" version "2.1.1.RELEASE" apply false
+  id 'org.springframework.boot' version '2.3.3.RELEASE' apply false
+  id 'com.github.ben-manes.versions' version '0.31.0' apply false
 }
 
 // The overall project version
@@ -10,6 +11,7 @@ subprojects {
   group = 'com.cultureofcode'
 
   apply plugin: 'java'
+  apply plugin: 'com.github.ben-manes.versions'
 
   repositories {
     mavenCentral()
@@ -35,7 +37,7 @@ project(':number-service') {
 
   dependencyManagement {
     imports {
-      mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Finchley.SR2'
+      mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Hoxton.SR8'
     }
   }
 
@@ -44,7 +46,7 @@ project(':number-service') {
     implementation('org.springframework.boot:spring-boot-starter-web')
     implementation('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
 
-    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
   }
 }
 
@@ -62,14 +64,14 @@ project(':service-discovery') {
 
   dependencyManagement {
     imports {
-      mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Finchley.SR2'
+      mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Hoxton.SR8'
     }
   }
 
   dependencies {
     implementation('org.springframework.cloud:spring-cloud-starter-netflix-eureka-server')
 
-    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
   }
 }
 
@@ -85,7 +87,7 @@ project(':diceware-cli') {
     implementation project(':number-generator')
     implementation('org.springframework.boot:spring-boot-starter')
 
-    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
   }
 }
 
@@ -98,7 +100,7 @@ project(':diceware-web') {
 
   dependencyManagement {
     imports {
-      mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Finchley.SR2'
+      mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Hoxton.SR8'
     }
   }
 
