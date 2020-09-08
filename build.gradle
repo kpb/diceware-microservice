@@ -48,10 +48,6 @@ project(':number-service') {
 
     testImplementation('org.springframework.boot:spring-boot-starter-test')
   }
-
-  bootJar {
-    layered()
-  }
 }
 
 project(':diceware-words') {
