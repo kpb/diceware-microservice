@@ -39,7 +39,7 @@ Build from the top
     
 Alternatively, you can build using Docker (no Java required!)
 
-    docker run --rm -u gradle -v "$PWD":/home/gradle/project -w /home/gradle/project gradle:jre gradle <gradle-task>
+    docker run --rm -u gradle -v "$PWD":/home/gradle/project -w /home/gradle/project gradle:6.6.1 gradle <gradle-task>
     
 See the [Gradle Dockerhub Image Page][7] for more info.
 
