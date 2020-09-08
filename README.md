@@ -36,6 +36,12 @@ Build from the top
 
     $ cd diceware-microservice
     $ ./gradlew build
+    
+Alternatively, you can build using Docker (no Java required!)
+
+    docker run --rm -u gradle -v "$PWD":/home/gradle/project -w /home/gradle/project gradle:jre gradle <gradle-task>
+    
+See the [Gradle Dockerhub Image Page][7] for more info.
 
 #### CLI
 
@@ -58,3 +64,5 @@ Run the command line app and follow the instructions. _Note: the version of the 
 [4]: https://maven.apache.org/
 [5]: https://theintercept.com/2015/03/26/passphrases-can-memorize-attackers-cant-guess/
 [6]: https://docs.gradle.org/current/userguide/gradle_wrapper.html
+
+[7]: https://hub.docker.com/_/gradle/
