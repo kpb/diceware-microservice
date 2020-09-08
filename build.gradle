@@ -1,5 +1,6 @@
 plugins {
-  id "org.springframework.boot" version "2.1.1.RELEASE" apply false
+  id 'org.springframework.boot' version '2.1.1.RELEASE' apply false
+  id "com.github.ben-manes.versions" version "0.31.0" apply false
 }
 
 // The overall project version
@@ -10,6 +11,7 @@ subprojects {
   group = 'com.cultureofcode'
 
   apply plugin: 'java'
+  apply plugin: 'com.github.ben-manes.versions'
 
   repositories {
     mavenCentral()
