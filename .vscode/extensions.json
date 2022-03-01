@@ -2,6 +2,7 @@
   "recommendations": [
     "vscjava.vscode-java-pack",
     "gabrielbb.vscode-lombok",
-    "Gruntfuggly.todo-tree"
+    "gruntfuggly.todo-tree",
+    "streetsidesoftware.code-spell-checker"
   ]
 }
