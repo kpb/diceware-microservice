@@ -4,16 +4,13 @@ Date: 2018-12-07
 
 ## Status
 
-Accepted
+~~Accepted~~ Superseded by [0003-use-github-flow.md](0003-use-github-flow.md)
 
 ## Context
 
 The project needs a Git branching model that will support releases, release patching, and ongoing
 development. It should be simple, idiomatic, and be publicly documented. We shouldn't re-invent the wheel, nor should we
 [bike shed](https://en.wikipedia.org/wiki/Law_of_triviality) edge cases that are high in complexity, low in value.
-
-The strategy should be compatible with Jenkins [multi branch
-pipelines](https://jenkins.io/doc/tutorials/build-a-multibranch-pipeline-project/).
 
 ## Decision
 
