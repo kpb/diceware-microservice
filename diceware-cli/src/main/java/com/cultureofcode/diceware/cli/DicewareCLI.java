@@ -11,17 +11,17 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class DicewareCLI {
 
-    @Bean
-    NumberGenerator numberGenerator() {
-        return new NumberGenerator();
-    }
+  @Bean
+  NumberGenerator numberGenerator() {
+    return new NumberGenerator();
+  }
 
-    @Bean
-    WordList wordList() {
-        return WordList.newInstance();
-    }
+  @Bean
+  WordList wordList() {
+    return WordList.newInstance();
+  }
 
-    public static void main(String[] args) {
-        SpringApplication.run(DicewareCLI.class, args);
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(DicewareCLI.class, args);
+  }
 }

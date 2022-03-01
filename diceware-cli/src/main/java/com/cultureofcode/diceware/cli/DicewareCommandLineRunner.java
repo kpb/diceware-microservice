@@ -17,66 +17,66 @@ import org.springframework.stereotype.Component;
 @Component
 public class DicewareCommandLineRunner implements CommandLineRunner {
 
-    @Autowired
-    ApplicationContext ctx;
+  @Autowired
+  ApplicationContext ctx;
 
-    @Autowired
-    DicewareService dicewareService;
+  @Autowired
+  DicewareService dicewareService;
 
-    @Override
-    public void run(String... strings) throws Exception {
+  @Override
+  public void run(String... strings) throws Exception {
 
-        int words = promptUser();
+    int words = promptUser();
 
-        System.out.println("Generating a " + words + " word passphrase...");
-        System.out.println();
+    System.out.println("Generating a " + words + " word passphrase...");
+    System.out.println();
 
-        // generate the passphrase
-        Map<Integer, String> passphrase = dicewareService.generatePassphrase(words);
+    // generate the passphrase
+    Map<Integer, String> passphrase = dicewareService.generatePassphrase(words);
 
-        // output with formatting
-        passphrase.values().forEach(word -> System.out.printf("%-10.10s", word));
-        System.out.println();
-        passphrase.keySet().forEach(num -> System.out.printf("%-10.10s", num));
-        System.out.println();
-        System.out.println("Enjoy your passphrase - be safe!");
-        System.out.println();
+    // output with formatting
+    passphrase.values().forEach(word -> System.out.printf("%-10.10s", word));
+    System.out.println();
+    passphrase.keySet().forEach(num -> System.out.printf("%-10.10s", num));
+    System.out.println();
+    System.out.println("Enjoy your passphrase - be safe!");
+    System.out.println();
 
 
-        // exit. thanks for the Lambda, java 8!
-        SpringApplication.exit(ctx, (ExitCodeGenerator) () -> 0);
-    }
+    // exit. thanks for the Lambda, java 8!
+    SpringApplication.exit(ctx, (ExitCodeGenerator) () -> 0);
+  }
 
-    /**
-     * Prompt the user for a valid passphrase word length.
-     */
-    int promptUser() {
+  /**
+   * Prompt the user for a valid passphrase word length.
+   */
+  int promptUser() {
 
-        try (Scanner scanner = new Scanner(System.in)) {
-            int words = 5;
+    try (Scanner scanner = new Scanner(System.in)) {
+      int words = 5;
 
-            System.out.print("How many words in the passphrase (default 5)? ");
+      System.out.print("How many words in the passphrase (default 5)? ");
 
-            // assuming they want the default
-            String line = scanner.nextLine();
-            if (line.isEmpty()) {
-                return words;
-            }
+      // assuming they want the default
+      String line = scanner.nextLine();
+      if (line.isEmpty()) {
+        return words;
+      }
 
-            // handle NumberFormatException and illegal args
-            try {
-              int length = Integer.valueOf(line);
+      // handle NumberFormatException and illegal args
+      try {
+        int length = Integer.valueOf(line);
 
-              if (length < 3 || length > 10) {
-                System.out.println("Valid values must be between 3 & 10");
-                return promptUser();
-              }
-              return length;
-
-            } catch (NumberFormatException nfe) {
-              System.out.println("Not a valid value");
-              return promptUser();
-            }
+        if (length < 3 || length > 10) {
+          System.out.println("Valid values must be between 3 & 10");
+          return promptUser();
         }
+        return length;
+
+      } catch (NumberFormatException nfe) {
+        System.out.println("Not a valid value");
+        return promptUser();
+      }
     }
+  }
 }
