@@ -1,11 +1,12 @@
 package com.cultureofcode.diceware;
 
-import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.Arrays;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
+// TODO better test method names
 public class NumberGeneratorTest {
 
   private int min = 11111;
@@ -18,8 +19,8 @@ public class NumberGeneratorTest {
 
     for (int i = 0; i < 10000; i++) {
       Integer diceNum = numberGenerator.generate();
-      assertThat(diceNum, greaterThanOrEqualTo(min));
-      assertThat(diceNum, lessThanOrEqualTo(max));
+      assertThat(diceNum).as("Generated num greater than or equal to 11111").isGreaterThanOrEqualTo(min);
+      assertThat(diceNum).as("Generated num less than or equal to 66666").isLessThanOrEqualTo(max);
     }
   }
 
@@ -40,27 +41,26 @@ public class NumberGeneratorTest {
 
     NumberGenerator numberGenerator = new NumberGenerator();
 
-    // scalacheck would be the bomb here!
     int[] setSize = {5, 6, 7, 8, 9, 10};
     Arrays.stream(setSize).forEach(i -> {
-      assertThat(numberGenerator.generate(i).size(), equalTo(i));
+      assertThat(numberGenerator.generate(i).size()).as("Check size of generated number").isEqualTo(i);
     });
   }
 
-  @Test(expected = IllegalArgumentException.class)
   public void generateSetTooBig() {
 
     NumberGenerator numberGenerator = new NumberGenerator();
     // can you imagine?
-    numberGenerator.generate(55556);
+    assertThatExceptionOfType(IllegalArgumentException.class)
+    .isThrownBy(() -> numberGenerator.generate(55556));
   }
 
-  @Test(expected = IllegalArgumentException.class)
   public void generateSetTooSmall() {
 
     NumberGenerator numberGenerator = new NumberGenerator();
     // generator pleaze...
-    numberGenerator.generate(1);
+    assertThatExceptionOfType(IllegalArgumentException.class)
+      .isThrownBy(() -> numberGenerator.generate(1));
   }
 
   @Test

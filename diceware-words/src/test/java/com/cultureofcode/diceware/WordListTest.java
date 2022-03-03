@@ -1,10 +1,9 @@
 package com.cultureofcode.diceware;
 
+import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.List;
-import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  *
@@ -20,10 +19,11 @@ public class WordListTest {
 
     WordList wordList = new WordList();
     wordList.load();
-    assertThat(wordList.getDicewordMap().size(), equalTo(7776));
+    assertEquals(wordList.getDicewordMap().size(), 7776);
   }
 
-  //@Test
+  // TODO implement proper test
+  // @Test
   public void testMap() {
 
     List<Integer> nums = new ArrayList<>();
@@ -35,26 +35,24 @@ public class WordListTest {
     List<Integer> remove = new ArrayList<>();
     for (Integer num : nums) {
 
-      //int n = num;
+      // int n = num;
       int n = 66601;
       while (n > 0) {
-        n = n%10;
+        n = n % 10;
         System.out.println(n);
 
         if (n == 0 || n > 6) {
           remove.add(num);
         }
-        n/=10;
+        n /= 10;
       }
-/*
- while (n > 0) {n
-     digits.add(n%10);
-     n/=10;
- } */
+      /*
+       * while (n > 0) {n digits.add(n%10); n/=10; }
+       */
     }
     nums.removeAll(remove);
     nums.stream().forEach((x) -> {
-      //System.out.println(x);
+      // System.out.println(x);
     });
 
 
