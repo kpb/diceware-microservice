@@ -22,7 +22,7 @@ how strong the passphrases are.
 
 ### Design
 
-TODO Microservices. Spring boot. Spring Netflix OSS. Other goodness.
+TODO 
 
 ### Building and Running
 
@@ -35,7 +35,7 @@ Clone the project
 Build from the top
 
     $ cd diceware-microservice
-    $ ./gradlew build
+    $ ./gradlew bootJar
     
 Alternatively, you can build using Docker (no Java required!)
 
