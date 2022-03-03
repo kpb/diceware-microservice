@@ -4,7 +4,6 @@
 .idea
 .project
 .settings
-.vscode
 build
 nb-configuration.xml
 nbproject
