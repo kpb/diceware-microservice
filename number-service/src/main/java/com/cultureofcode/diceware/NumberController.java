@@ -1,12 +1,12 @@
 package com.cultureofcode.diceware;
 
-import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -33,10 +33,10 @@ public class NumberController {
     return new DicewareNumbers().setDicewareNumbers(numberGenerator.generate(length));
   }
 
-  @ExceptionHandler(IllegalArgumentException.class)
-  public ClientError handleIllegalArgs(IllegalArgumentException iae, HttpServletResponse resp) {
+  @ExceptionHandler
+  @ResponseStatus(HttpStatus.BAD_REQUEST)
+  public ClientError handleIllegalArgs(IllegalArgumentException iae) {
 
-    resp.setStatus(HttpStatus.BAD_REQUEST.value());
     return new ClientError(iae.getMessage());
 
   }
