@@ -13,13 +13,14 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 /**
+ * Number Controller integration tests. Tests using the complete Spring Context.
  *
  * @author kenneth
  */
 @SpringBootTest
 @AutoConfigureMockMvc
 @AutoConfigureJsonTesters
-public class NumberControllerTest {
+public class NumberControllerIntegrationTest {
 
   @Autowired
   MockMvc mockMvc;
