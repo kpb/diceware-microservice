@@ -6,13 +6,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Spring-boot and config class.
+ * Spring-boot application and config class.
  *
  * @author kenneth
  */
 @Configuration
 @SpringBootApplication
-public class NumberService {
+public class NumberServiceApplication {
 
   @Bean
   NumberGenerator numberGenerator() {
@@ -20,6 +20,6 @@ public class NumberService {
   }
 
   public static void main(String[] args) {
-    SpringApplication.run(NumberService.class, args);
+    SpringApplication.run(NumberServiceApplication.class, args);
   }
 }
