@@ -1,12 +1,14 @@
 package com.cultureofcode.diceware;
 
-import static org.hamcrest.collection.IsCollectionWithSize.*;
+import static org.assertj.core.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.json.AutoConfigureJsonTesters;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.json.BasicJsonTester;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -16,36 +18,46 @@ import org.springframework.test.web.servlet.MockMvc;
  */
 @SpringBootTest
 @AutoConfigureMockMvc
+@AutoConfigureJsonTesters
 public class NumberControllerTest {
 
   @Autowired
   MockMvc mockMvc;
 
+  @Autowired
+  private BasicJsonTester json;
+
   @Test
   public void getDefaultLength() throws Exception {
 
-    mockMvc.perform(get("/diceware/numbers")).andExpect(status().isOk())
+    String content = mockMvc.perform(get("/diceware/numbers")).andExpect(status().isOk())
         .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-        .andExpect(jsonPath("diceware_numbers").isArray())
-        .andExpect(jsonPath("diceware_numbers", hasSize(5)));
+        .andExpect(jsonPath("diceware_numbers").isArray()).andReturn().getResponse()
+        .getContentAsString();
+
+    assertThat(json.from(content)).extractingJsonPathValue("diceware_numbers").asList().hasSize(5);
   }
 
   @Test
   public void get3() throws Exception {
 
-    mockMvc.perform(get("/diceware/numbers?length=3")).andExpect(status().isOk())
+    String content = mockMvc.perform(get("/diceware/numbers?length=3")).andExpect(status().isOk())
         .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-        .andExpect(jsonPath("diceware_numbers").isArray())
-        .andExpect(jsonPath("diceware_numbers", hasSize(3)));
+        .andExpect(jsonPath("diceware_numbers").isArray()).andReturn().getResponse()
+        .getContentAsString();
+
+    assertThat(json.from(content)).extractingJsonPathValue("diceware_numbers").asList().hasSize(3);
   }
 
   @Test
   public void get10() throws Exception {
 
-    mockMvc.perform(get("/diceware/numbers?length=10")).andExpect(status().isOk())
+    String content = mockMvc.perform(get("/diceware/numbers?length=10")).andExpect(status().isOk())
         .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-        .andExpect(jsonPath("diceware_numbers").isArray())
-        .andExpect(jsonPath("diceware_numbers", hasSize(10)));
+        .andExpect(jsonPath("diceware_numbers").isArray()).andReturn().getResponse()
+        .getContentAsString();
+
+    assertThat(json.from(content)).extractingJsonPathValue("diceware_numbers").asList().hasSize(10);
   }
 
   @Test
