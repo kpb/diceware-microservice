@@ -30,7 +30,7 @@ public class NumberController {
   @GetMapping(path = "/numbers")
   public DicewareNumbers getNumbers(@RequestParam(name = "length", defaultValue = "5") int length) {
 
-    return new DicewareNumbers().setDicewareNumbers(numberGenerator.generate(length));
+    return new DicewareNumbers(numberGenerator.generate(length));
   }
 
   @ExceptionHandler

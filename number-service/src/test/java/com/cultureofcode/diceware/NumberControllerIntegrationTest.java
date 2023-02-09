@@ -64,8 +64,12 @@ public class NumberControllerIntegrationTest {
   @Test
   public void getNumbers_tooMany_badRequest() throws Exception {
 
-    mockMvc.perform(get("/diceware/numbers?length=20")).andExpect(status().isBadRequest())
-        .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE));
+    String content =
+        mockMvc.perform(get("/diceware/numbers?length=20")).andExpect(status().isBadRequest())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE)).andReturn()
+            .getResponse().getContentAsString();
+
+    // TODO check content of error message?
   }
 
   @Test
