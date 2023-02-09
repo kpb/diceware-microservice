@@ -29,7 +29,7 @@ public class NumberControllerIntegrationTest {
   private BasicJsonTester json;
 
   @Test
-  public void getDefaultLength() throws Exception {
+  public void getNumbers_defaultLength_returns5() throws Exception {
 
     String content = mockMvc.perform(get("/diceware/numbers")).andExpect(status().isOk())
         .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
@@ -40,7 +40,7 @@ public class NumberControllerIntegrationTest {
   }
 
   @Test
-  public void get3() throws Exception {
+  public void getNumbers_lengthOf3_returns3() throws Exception {
 
     String content = mockMvc.perform(get("/diceware/numbers?length=3")).andExpect(status().isOk())
         .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
@@ -51,7 +51,7 @@ public class NumberControllerIntegrationTest {
   }
 
   @Test
-  public void get10() throws Exception {
+  public void getNumbers_lengthof10_returns10() throws Exception {
 
     String content = mockMvc.perform(get("/diceware/numbers?length=10")).andExpect(status().isOk())
         .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
@@ -62,14 +62,14 @@ public class NumberControllerIntegrationTest {
   }
 
   @Test
-  public void getTooMany() throws Exception {
+  public void getNumbers_tooMany_badRequest() throws Exception {
 
     mockMvc.perform(get("/diceware/numbers?length=20")).andExpect(status().isBadRequest())
         .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE));
   }
 
   @Test
-  public void getTooFew() throws Exception {
+  public void getNumbers_tooFew_badRequest() throws Exception {
 
     mockMvc.perform(get("/diceware/numbers?length=1")).andExpect(status().isBadRequest())
         .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE));
