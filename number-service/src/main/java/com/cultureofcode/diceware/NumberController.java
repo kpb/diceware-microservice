@@ -25,7 +25,7 @@ public class NumberController {
    * Get a Set of Diceware Numbers.
    *
    * @param length how many 5 digit diceware numbers in the Set?
-   * @return
+   * @return A Set of Diceware numbers
    */
   @GetMapping(path = "/numbers")
   public DicewareNumbers getNumbers(@RequestParam(name = "length", defaultValue = "5") int length) {
@@ -33,6 +33,11 @@ public class NumberController {
     return new DicewareNumbers(numberGenerator.generate(length));
   }
 
+  /**
+   * Handle Illegal args from the number generator.
+   * @param iae the exception to handle
+   * @return the custom error
+   */
   @ExceptionHandler
   @ResponseStatus(HttpStatus.BAD_REQUEST)
   public ClientError handleIllegalArgs(IllegalArgumentException iae) {

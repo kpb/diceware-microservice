@@ -14,11 +14,19 @@ import org.springframework.context.annotation.Configuration;
 @SpringBootApplication
 public class NumberServiceApplication {
 
+  /**
+   * NumberGenerator Bean.
+   * @return an instance of the NumberGenerator
+   */
   @Bean
   NumberGenerator numberGenerator() {
     return new NumberGenerator();
   }
 
+  /**
+   * Spring Boot entrypoint.
+   * @param args any args
+   */
   public static void main(String[] args) {
     SpringApplication.run(NumberServiceApplication.class, args);
   }
