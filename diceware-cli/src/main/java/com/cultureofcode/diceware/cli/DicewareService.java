@@ -47,7 +47,5 @@ public class DicewareService {
     });
 
     return passphrase;
-
   }
-
 }

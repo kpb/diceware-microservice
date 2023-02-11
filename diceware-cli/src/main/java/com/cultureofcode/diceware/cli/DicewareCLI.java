@@ -1,11 +1,12 @@
 package com.cultureofcode.diceware.cli;
 
-import com.cultureofcode.diceware.NumberGenerator;
-import com.cultureofcode.diceware.WordList;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import com.cultureofcode.diceware.NumberGenerator;
+import com.cultureofcode.diceware.WordList;
 
 @SpringBootApplication
 @Configuration
@@ -22,6 +23,8 @@ public class DicewareCLI {
   }
 
   public static void main(String[] args) {
-    SpringApplication.run(DicewareCLI.class, args);
+    SpringApplication app = new SpringApplication(DicewareCLI.class);
+    app.setWebApplicationType(WebApplicationType.NONE);
+    app.run(args);
   }
 }

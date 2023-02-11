@@ -8,3 +8,7 @@ dependencies {
   implementation project(':diceware-words')
   implementation project(':number-generator')
 }
+
+bootRun {
+  standardInput = System.in
+}

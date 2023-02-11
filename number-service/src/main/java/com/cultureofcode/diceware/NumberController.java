@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Spring MVC Controller for requesting Diceware numbers.
+ * Spring MVC REST Controller for requesting Diceware numbers.
  *
  * @author kenneth
  */
