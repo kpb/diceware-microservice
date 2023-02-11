@@ -7,47 +7,63 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
+import lombok.Getter;
+
 
 /**
+ * Word list implementation that loads the EFF word list off of the classpath.
  *
  * @author kenneth
  */
 public class WordList {
 
-    String wordlistFile = "/eff_large_wordlist.txt";
+  /**
+   * Private c-tor to force the use of the newInstance factory method.
+   */
+  private WordList() {}
 
-    Map<Integer, String> dicewordMap = new HashMap<>();
+  String wordlistFile = "/eff_large_wordlist.txt";
 
-    public static WordList newInstance() {
-        WordList wordList = new WordList();
-        wordList.load();
-        return wordList;
-    }
+  @Getter
+  Map<Integer, String> dicewordMap = new HashMap<>();
 
-    /**
-     * Loads the diceware word list.
-     */
-    void load() {
+  /**
+   * Create a new instance of the WordList.
+   *
+   * @return a WordList loaded with Diceware words.
+   */
+  public static WordList newInstance() {
+    return new WordList().load();
+  }
 
-        InputStream is = this.getClass().getResourceAsStream(wordlistFile);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+  /**
+   * Loads the EFF diceware word list from a file on the classpath.
+   *
+   * @return this instance loaded with Diceware words
+   */
+  private WordList load() {
 
-        Pattern dicewareNumberPattern = Pattern.compile("^\\d{5}\\s.*");
+    InputStream is = this.getClass().getResourceAsStream(wordlistFile);
+    BufferedReader reader = new BufferedReader(new InputStreamReader(is));
 
-        Stream<String> lines = reader.lines();
+    Pattern dicewareNumberPattern = Pattern.compile("^\\d{5}\\s.*");
 
-        lines.filter(line -> dicewareNumberPattern.matcher(line).matches())
-                .forEach(line -> {
-                    String[] tokens = line.split("\\s");
-                    dicewordMap.put(Integer.valueOf(tokens[0]), tokens[1]);
-                });
-    }
+    Stream<String> lines = reader.lines();
 
-    public String getWord(int num) {
-        return dicewordMap.get(num);
-    }
+    lines.filter(line -> dicewareNumberPattern.matcher(line).matches()).forEach(line -> {
+      String[] tokens = line.split("\\s");
+      dicewordMap.put(Integer.valueOf(tokens[0]), tokens[1]);
+    });
+    return this;
+  }
 
-    public Map<Integer, String> getDicewordMap() {
-        return dicewordMap;
-    }
+  /**
+   * Get the Diceware word from the EFF list that corresponds to the provided number.
+   *
+   * @param num the number representing 5 rolls of a dice
+   * @return the work corresponding to the number
+   */
+  public String getWord(int num) {
+    return dicewordMap.get(num);
+  }
 }

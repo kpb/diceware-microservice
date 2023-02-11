@@ -1,8 +1,6 @@
 package com.cultureofcode.diceware;
 
 import static org.assertj.core.api.Assertions.*;
-import java.util.ArrayList;
-import java.util.List;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -17,8 +15,7 @@ public class WordListTest {
   @Test
   public void testLoad() {
 
-    WordList wordList = new WordList();
-    wordList.load();
+    WordList wordList = WordList.newInstance();
     assertThat(wordList.getDicewordMap().size()).as("Word list containts 7776 entries")
         .isEqualTo(7776);
   }
