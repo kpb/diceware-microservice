@@ -69,13 +69,17 @@ public class NumberControllerIntegrationTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE)).andReturn()
             .getResponse().getContentAsString();
 
-    // TODO check content of error message?
+    assertThat(content).isNotEmpty();
   }
 
   @Test
   public void getNumbers_tooFew_badRequest() throws Exception {
 
-    mockMvc.perform(get("/diceware/numbers?length=1")).andExpect(status().isBadRequest())
-        .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE));
+    String content =
+        mockMvc.perform(get("/diceware/numbers?length=1")).andExpect(status().isBadRequest())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE)).andReturn()
+            .getResponse().getContentAsString();
+
+    assertThat(content).isNotEmpty();
   }
 }
