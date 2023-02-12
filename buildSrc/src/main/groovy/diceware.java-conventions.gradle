@@ -25,7 +25,7 @@ java {
 }
 
 tasks.withType(JavaCompile) {
-  options.compilerArgs << "-Xlint:all" << "-Xlint:-processing" << "-Werror"
+  options.compilerArgs << "-Xlint:all" << "-Xlint:-processing" << "-Xlint:-text-blocks" << "-Werror"
 }
 
 test {

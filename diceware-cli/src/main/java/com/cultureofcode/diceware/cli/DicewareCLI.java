@@ -22,7 +22,8 @@ public class DicewareCLI {
     return WordList.newInstance();
   }
 
-  public static void main(String[] args) {
+  public static void main(String... args) {
+
     SpringApplication app = new SpringApplication(DicewareCLI.class);
     app.setWebApplicationType(WebApplicationType.NONE);
     app.run(args);

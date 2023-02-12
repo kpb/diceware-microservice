@@ -1,5 +1,6 @@
 package com.cultureofcode.diceware.cli;
 
+import java.util.Arrays;
 import java.util.Map;
 import java.util.Scanner;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +24,31 @@ public class DicewareCommandLineRunner implements CommandLineRunner {
   @Autowired
   DicewareService dicewareService;
 
-  @Override
-  public void run(String... strings) throws Exception {
+  String helpMessage = """
+      Call the application with no args for interactive use.
+      Provide an optional length between 3 and 10 to generate a passphase.
+      """;
 
-    int words = promptUser();
+  @Override
+  public void run(String... args) throws Exception {
+
+    int words = 0;
+
+    if (Arrays.asList(args).isEmpty()) {
+      words = promptUser();
+    } else if (args[0].equals("moo")) {
+      System.out.println(moo);
+      System.exit(SpringApplication.exit(ctx, (ExitCodeGenerator) () -> 0));
+    } else {
+      try {
+        words = Integer.valueOf(args[0]);
+      } catch (NumberFormatException nfe) {
+        // print help and bail
+        System.out.println("Unknown argument \"" + args[0] + "\"");
+        System.out.println(helpMessage);
+        System.exit(SpringApplication.exit(ctx, (ExitCodeGenerator) () -> 1));
+      }
+    }
 
     System.out.println("Generating a " + words + " word passphrase...");
     System.out.println();
@@ -42,8 +64,7 @@ public class DicewareCommandLineRunner implements CommandLineRunner {
     System.out.println("Enjoy your passphrase - be safe!");
     System.out.println();
 
-
-    // exit. thanks for the Lambda, java 8!
+    // exit.
     SpringApplication.exit(ctx, (ExitCodeGenerator) () -> 0);
   }
 
@@ -79,4 +100,14 @@ public class DicewareCommandLineRunner implements CommandLineRunner {
       }
     }
   }
+
+  String moo = """
+    < Have you mooed today? >    $
+     -----------------------     $
+              ^__^               $
+              (oo)\\_______      $
+              (__)\\       )\\/\\$
+                  ||----w |      $
+                  ||     ||      $
+        """.replace("$\n", "\n");
 }
