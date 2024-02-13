@@ -1,5 +1,0 @@
-plugins {
-  id 'diceware.springboot-conventions'
-}
-
-version '0.1.0'
