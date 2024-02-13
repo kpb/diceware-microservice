@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import lombok.Getter;
 
@@ -13,14 +14,14 @@ import lombok.Getter;
 /**
  * Word list implementation that loads the EFF word list off of the classpath.
  *
- * @author kenneth
+ * @author Kenneth
  */
 public class WordList {
 
   /**
-   * Private c-tor to force the use of the newInstance factory method.
+   * Package protected c-tor to force the use of the newInstance factory method.
    */
-  private WordList() {}
+  WordList() {}
 
   String wordlistFile = "/eff_large_wordlist.txt";
 
@@ -46,15 +47,25 @@ public class WordList {
     InputStream is = this.getClass().getResourceAsStream(wordlistFile);
     BufferedReader reader = new BufferedReader(new InputStreamReader(is));
 
+    dicewordMap.putAll(parseWordlistLines(reader.lines()));
+
+    return this;
+  }
+
+  /**
+   * Parses a stream of lines from the EFF Long Word List into a Hash of number:word. The file
+   * currently can be found at https://www.eff.org/files/2016/07/18/eff_large_wordlist.txt
+   *
+   * @param lines A Stream of lines from a word list file
+   * @return a hash of the Word List
+   */
+  Map<Integer, String> parseWordlistLines(Stream<String> lines) {
+
     Pattern dicewareNumberPattern = Pattern.compile("^\\d{5}\\s.*");
 
-    Stream<String> lines = reader.lines();
-
-    lines.filter(line -> dicewareNumberPattern.matcher(line).matches()).forEach(line -> {
-      String[] tokens = line.split("\\s");
-      dicewordMap.put(Integer.valueOf(tokens[0]), tokens[1]);
-    });
-    return this;
+    return lines.filter(line -> dicewareNumberPattern.matcher(line).matches())
+        .map(line -> line.split("\\s"))
+        .collect(Collectors.toMap(a -> Integer.valueOf(a[0]), a -> a[1]));
   }
 
   /**
