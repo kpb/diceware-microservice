@@ -3,6 +3,7 @@ package com.cultureofcode.diceware;
 import static org.assertj.core.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import org.assertj.core.api.InstanceOfAssertFactories;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.json.AutoConfigureJsonTesters;
@@ -36,7 +37,8 @@ public class NumberControllerIntegrationTest {
         .andExpect(jsonPath("diceware_numbers").isArray()).andReturn().getResponse()
         .getContentAsString();
 
-    assertThat(json.from(content)).extractingJsonPathValue("diceware_numbers").asList().hasSize(5);
+    assertThat(json.from(content)).extractingJsonPathValue("diceware_numbers")
+        .asInstanceOf(InstanceOfAssertFactories.LIST).hasSize(5);
   }
 
   @Test
@@ -47,7 +49,8 @@ public class NumberControllerIntegrationTest {
         .andExpect(jsonPath("diceware_numbers").isArray()).andReturn().getResponse()
         .getContentAsString();
 
-    assertThat(json.from(content)).extractingJsonPathValue("diceware_numbers").asList().hasSize(3);
+    assertThat(json.from(content)).extractingJsonPathValue("diceware_numbers")
+        .asInstanceOf(InstanceOfAssertFactories.LIST).hasSize(3);
   }
 
   @Test
@@ -58,7 +61,8 @@ public class NumberControllerIntegrationTest {
         .andExpect(jsonPath("diceware_numbers").isArray()).andReturn().getResponse()
         .getContentAsString();
 
-    assertThat(json.from(content)).extractingJsonPathValue("diceware_numbers").asList().hasSize(10);
+    assertThat(json.from(content)).extractingJsonPathValue("diceware_numbers")
+        .asInstanceOf(InstanceOfAssertFactories.LIST).hasSize(10);
   }
 
   @Test
